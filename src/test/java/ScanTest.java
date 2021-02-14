@@ -137,33 +137,4 @@ public class ScanTest {
                 "Interval{start=16:48:44, end=16:48:44.363, access=99.637}\n";
         assertThat(result, is(expected));
     }
-
-    /*@Test
-    public void whenConvert2() {
-        String str = "192.168.32.181 - - [14/06/2017:16:48:46 +1000] \"PUT /rest/v1.4/documents?zone=default&_rid=95f5d9cd HTTP/1.1\" 200 2 1500 \"-\" \"@list-item-updater\" prio:0\n" +
-                "192.168.32.181 - - [14/06/2017:16:48:59 +1000] \"PUT /rest/v1.4/documents?zone=default&_rid=35f8318b HTTP/1.1\" 200 2 968 \"-\" \"@list-item-updater\" prio:0\n" +
-                "192.168.32.181 - - [14/06/2017:16:49:46 +1000] \"PUT /rest/v1.4/documents?zone=default&_rid=d64617f3 HTTP/1.1\" 200 2 150 \"-\" \"@list-item-updater\" prio:0\n" +
-                "192.168.32.181 - - [14/06/2017:16:40:46 +1000] \"PUT /rest/v1.4/documents?zone=default&_rid=58225626 HTTP/1.1\" 200 2 162.307081 \"-\" \"@list-item-updater\" prio:0\n" +
-                "192.168.32.181 - - [14/06/2017:16:53:46 +1000] \"PUT /rest/v1.4/documents?zone=default&_rid=6616f299 HTTP/1.1\" 200 2 153.729479 \"-\" \"@list-item-updater\" prio:0\n" +
-                "192.168.32.181 - - [14/06/2017:16:59:46 +1000] \"PUT /rest/v1.4/documents?zone=default&_rid=c71af7ce HTTP/1.1\" 500 2 260 \"-\" \"@list-item-updater\" prio:0\n" +
-                "192.168.32.181 - - [14/06/2017:16:59:47 +1000] \"PUT /rest/v1.4/documents?zone=default&_rid=411d81f HTTP/1.1\" 200 2 6983 \"-\" \"@list-item-updater\" prio:0\n";
-        Scan scan = new Scan(str, 99.9, 1500);
-        scan.analyze();
-        scan.toIntervals();
-        scan.convert();
-        String result = "";
-        for (Interval interval : scan.getResult()) {
-            result = result + interval.toString() + "\n";
-        }
-        String expected = "Interval{start=16:47:04, end=16:47:04.382, access=99.618}\n" +
-                "Interval{start=16:47:07, end=16:47:07.366, access=99.634}\n" +
-                "Interval{start=16:47:21, end=16:47:21.406, access=99.59400000000001}\n" +
-                "Interval{start=16:47:25, end=16:47:25.331, access=99.669}\n" +
-                "Interval{start=16:47:40, end=16:47:40.376, access=99.624}\n" +
-                "Interval{start=16:47:51, end=16:47:51.325, access=99.675}\n" +
-                "Interval{start=16:47:52, end=16:47:52.432, access=99.568}\n" +
-                "Interval{start=16:48:18, end=16:48:18.332, access=99.668}\n" +
-                "Interval{start=16:48:44, end=16:48:44.363, access=99.637}\n";
-        assertThat(result, is(expected));
-    }*/
 }
