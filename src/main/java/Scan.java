@@ -67,8 +67,6 @@ public class Scan {
                 refuses.add(new Refuse(start, duration));
             }
         }
-        toIntervals();
-        convert();
     }
 
     public void toIntervals() {

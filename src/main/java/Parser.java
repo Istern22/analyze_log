@@ -21,6 +21,8 @@ public class Parser {
         }
         Scan scan = new Scan(log, arguments.usage(), arguments.time());
         scan.analyze();
+        scan.toIntervals();
+        scan.convert();
         scan.getResult().stream().forEach(System.out::println);
     }
 }
