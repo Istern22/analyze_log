@@ -105,21 +105,23 @@ public class Scan {
                 .minusMinutes(absoluteStart.getMinute())
                 .minusSeconds(absoluteStart.getSecond());
         for (ArrayList<Refuse> interval : intervals) {
-            LocalTime fullDuration = interval.get(0).getStart();
-            for (Refuse refuse : interval) {
-                LocalTime duration = refuse.getStart().plusNanos((long)refuse.getDuration() * 1000000);
-                if (fullDuration.isBefore(duration)) {
-                    fullDuration = duration;
+            if (interval.size() != 0) {
+                LocalTime fullDuration = interval.get(0).getStart();
+                for (Refuse refuse : interval) {
+                    LocalTime duration = refuse.getStart().plusNanos((long)refuse.getDuration() * 1000000);
+                    if (fullDuration.isBefore(duration)) {
+                        fullDuration = duration;
+                    }
                 }
+                LocalTime startInterval = interval.get(0).getStart();
+                LocalTime intervalDuration = fullDuration.minusHours(startInterval.getHour())
+                        .minusMinutes(startInterval.getMinute())
+                        .minusSeconds(startInterval.getSecond());
+                double intervalNano = intervalDuration.toNanoOfDay();
+                double fullNano = fullTime.toNanoOfDay();
+                double accessInterval = (1 - intervalNano / fullNano) * 100;
+                result.add(new Interval(interval.get(0).getStart(), fullDuration, accessInterval));
             }
-            LocalTime startInterval = interval.get(0).getStart();
-            LocalTime intervalDuration = fullDuration.minusHours(startInterval.getHour())
-                    .minusMinutes(startInterval.getMinute())
-                    .minusSeconds(startInterval.getSecond());
-            double intervalNano = intervalDuration.toNanoOfDay();
-            double fullNano = fullTime.toNanoOfDay();
-            double accessInterval = (1 - intervalNano / fullNano) * 100;
-            result.add(new Interval(interval.get(0).getStart(), fullDuration, accessInterval));
         }
     }
 }
